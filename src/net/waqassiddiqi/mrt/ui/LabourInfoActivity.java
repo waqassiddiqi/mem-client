@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import com.fedorvlasov.lazylist.ImageLoader;
 
@@ -91,23 +90,7 @@ public class LabourInfoActivity extends BaseActivity {
 				mWorkerId = objWorker.Id;
 				mWorkerName = objWorker.name;
 				
-				((TextView) findViewById(R.id.txtName)).setText(objWorker.name);
-				((TextView) findViewById(R.id.txtGender)).setText(objWorker.gender);
-				((TextView) findViewById(R.id.txtNationality)).setText(objWorker.nationality);
-				
-				((TextView) findViewById(R.id.txtPassport)).setText(objWorker.passportNumber);
-				((TextView) findViewById(R.id.txtPassportExpiry)).setText(objWorker.passportExpiry);
-				
-				((TextView) findViewById(R.id.txtPermit)).setText(objWorker.permit);
-				((TextView) findViewById(R.id.txtPermitExpiry)).setText(objWorker.permitExpiry);
-				
-				((TextView) findViewById(R.id.txtPackage)).setText(objWorker.workerPackage);
-				((TextView) findViewById(R.id.txtSubcontractor)).setText(objWorker.subContractor);
-				
-				((TextView) findViewById(R.id.txtCamp)).setSingleLine(false);
-				((TextView) findViewById(R.id.txtCamp)).setText(objWorker.campName);
-				
-				mImgLoader.DisplayImage(objWorker.photoUrl, (ImageView) findViewById(R.id.imgDisplayPic));
+				bindControls(objWorker);
 				
 				mIsValidJsonData = true;
 				
@@ -116,7 +99,8 @@ public class LabourInfoActivity extends BaseActivity {
 			}
 		}		
 		
-		invokeWebservice(Constants.OPCODE_WORKER_INFO, "workerid", mWorkerId);
+		invokeWebservice(Constants.OPCODE_WORKER_INFO, "workerid", mWorkerId, 
+				"username", mApp.getCurrentUsername(), "password", mApp.getCurrentPassword());
 	}
 	
 	private void checkCampOffence(List<Camp> workerCamps) {
@@ -159,22 +143,41 @@ public class LabourInfoActivity extends BaseActivity {
 		}		
 	}
 	
+	private void bindControls(Worker objWorker) {
+		
+		if(objWorker == null)
+			return;
+		
+		((TextView) findViewById(R.id.txtName)).setText(objWorker.name);
+		((TextView) findViewById(R.id.txtGender)).setText(objWorker.gender);
+		((TextView) findViewById(R.id.txtNationality)).setText(objWorker.nationality);
+		
+		((TextView) findViewById(R.id.txtPassport)).setText(objWorker.passportNumber);
+		((TextView) findViewById(R.id.txtPassportExpiry)).setText(objWorker.passportExpiry);
+		
+		((TextView) findViewById(R.id.txtPermit)).setText(objWorker.permit);
+		((TextView) findViewById(R.id.txtPermitExpiry)).setText(objWorker.permitExpiry);
+		
+		((TextView) findViewById(R.id.txtPackage)).setText(objWorker.workerPackage);
+		((TextView) findViewById(R.id.txtSubcontractor)).setText(objWorker.subContractor);
+		
+		((TextView) findViewById(R.id.txtCamp)).setSingleLine(false);
+		((TextView) findViewById(R.id.txtCamp)).setText(objWorker.campName);
+		
+		mImgLoader.DisplayImage(objWorker.photoUrl, (ImageView) findViewById(R.id.imgDisplayPic));
+	}
+	
 	@Override
 	protected void bindData(Response response) {
 		
 		try {
 			if(response != null && response.getAttachedData() != null) {
-				if(response.getAttachedData().has("name")) {
-					((TextView) findViewById(R.id.txtName)).setText(response.getAttachedData().getString("name"));
-					mWorkerName = response.getAttachedData().getString("name");
-				}
+				Worker objWorker = Worker.parseJson(response.getAttachedData().toString());
+				bindControls(objWorker);
 				
-				if(response.getAttachedData().has("passport"))
-					((TextView) findViewById(R.id.txtPassport)).setText(response.getAttachedData().getString("passport"));
+				mWorkerName = response.getAttachedData().getString("name");
 				
-				if(response.getAttachedData().has("nationality"))
-					((TextView) findViewById(R.id.txtNationality)).setText(response.getAttachedData().getString("nationality"));
-		
+				/*
 				if(response.getAttachedData().has("photo") && response.getAttachedData().getString("photo") != null 
 						&& response.getAttachedData().getString("photo").trim().length() > 0) {									
 					
@@ -206,6 +209,7 @@ public class LabourInfoActivity extends BaseActivity {
 					
 					checkCampOffence(lst);
 				}
+				*/
 				
 			} else {
 				if(mIsValidJsonData == false) {
@@ -231,5 +235,4 @@ public class LabourInfoActivity extends BaseActivity {
 		
 		((TextView) findViewById(R.id.txtCamp)).setText(sb.toString());
 	}
-
 }

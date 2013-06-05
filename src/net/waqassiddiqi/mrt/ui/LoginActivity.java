@@ -1,5 +1,6 @@
 package net.waqassiddiqi.mrt.ui;
 
+import net.waqassiddiqi.mrt.App;
 import net.waqassiddiqi.mrt.Constants;
 import net.waqassiddiqi.mrt.R;
 import net.waqassiddiqi.mrt.model.Response;
@@ -94,9 +95,14 @@ public class LoginActivity extends BaseActivity {
          	   
          	   dialog.dismiss();
             }
-        });					    	
+        })
+        .setTitle("Error");					    	
 		
 		if(response != null && response.getResultCode().equals("0")) {
+			
+			App app = (App) getApplication();
+			app.setCurrentUsername(txtUsername.getText().toString());
+			app.setCurrentPassword(txtPassword.getText().toString());
 			
 			Intent intent = new Intent(this, DashboardActivity.class);
 			startActivity(intent);
@@ -110,7 +116,6 @@ public class LoginActivity extends BaseActivity {
 		} else {
 			AlertDialog alert = builder.create();
 			alert.show();
-		}		
-				
+		}			
 	}
 }
