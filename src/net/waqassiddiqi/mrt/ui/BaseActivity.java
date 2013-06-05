@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import net.waqassiddiqi.mrt.model.Response;
 import net.waqassiddiqi.mrt.service.WebClient;
+import net.waqassiddiqi.mrt.util.Utils;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -40,6 +41,10 @@ public abstract class BaseActivity extends SherlockActivity {
 		
 		JSONObject jsonParams = new JSONObject();
 		try {
+			
+			if(Utils.isOnline(getApplicationContext()) == false)
+				throw new Exception("Unable to connect to internet");
+			
 			for(int i=0; i<params.length; i+=2) {
 				jsonParams.put(params[i], params[i+1]);
 			}
@@ -87,8 +92,10 @@ public abstract class BaseActivity extends SherlockActivity {
 		
 		@Override
 		protected void onPreExecute() {
-			if(bShowLoading)
+			if(bShowLoading) {
 				mProgressDialog = ProgressDialog.show(mContext, "Fetching data", "Please wait...", true);
+				mProgressDialog.setCancelable(true);
+			}
 		}
 		
 		@Override

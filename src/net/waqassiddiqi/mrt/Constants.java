@@ -4,7 +4,7 @@ import android.app.AlarmManager;
 
 public class Constants {
 	public static final String TAG = "MRT-Module";
-	public static final String WEB_SERVICE_URL = "http://lab.kalsym.com/mrt/api.php";
+	public static final String WEB_SERVICE_URL = "http://125.252.72.146:8089/api/api.php";
 	
 	public static final String OPCODE_LOGIN = "login";
 	public static final String OPCODE_WORKER_INFO = "workerinfo";

@@ -158,7 +158,6 @@ public class DashboardActivity extends BaseActivity {
 		if (scanResult != null && scanResult.getContents() != null && scanResult.getContents().trim().length() > 0) {
 			
 			Intent labourIntent = new Intent(this, LabourInfoActivity.class);
-			//labourIntent.putExtra("workerId", scanResult.getContents().trim());
 			labourIntent.putExtra("jsonData", scanResult.getContents().trim());
 			startActivity(labourIntent);
 			

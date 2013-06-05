@@ -92,8 +92,17 @@ public class LabourInfoActivity extends BaseActivity {
 				mWorkerName = objWorker.name;
 				
 				((TextView) findViewById(R.id.txtName)).setText(objWorker.name);
-				((TextView) findViewById(R.id.txtPassport)).setText(objWorker.passportNumber);
+				((TextView) findViewById(R.id.txtGender)).setText(objWorker.gender);
 				((TextView) findViewById(R.id.txtNationality)).setText(objWorker.nationality);
+				
+				((TextView) findViewById(R.id.txtPassport)).setText(objWorker.passportNumber);
+				((TextView) findViewById(R.id.txtPassportExpiry)).setText(objWorker.passportExpiry);
+				
+				((TextView) findViewById(R.id.txtPermit)).setText(objWorker.permit);
+				((TextView) findViewById(R.id.txtPermitExpiry)).setText(objWorker.permitExpiry);
+				
+				((TextView) findViewById(R.id.txtPackage)).setText(objWorker.workerPackage);
+				((TextView) findViewById(R.id.txtSubcontractor)).setText(objWorker.subContractor);
 				
 				((TextView) findViewById(R.id.txtCamp)).setSingleLine(false);
 				((TextView) findViewById(R.id.txtCamp)).setText(objWorker.campName);

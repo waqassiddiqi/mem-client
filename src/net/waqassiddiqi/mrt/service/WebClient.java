@@ -24,9 +24,9 @@ public class WebClient {
 	public static Response invokeWebservice(String opCode, JSONObject params) {
 		try {
 			HttpParams httpParameters = new BasicHttpParams();			
-			int timeoutConnection = 300000;
+			int timeoutConnection = 30000;
 			HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-			int timeoutSocket = 500000;
+			int timeoutSocket = 50000;
 			HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 			
 			DefaultHttpClient httpClient = new DefaultHttpClient(httpParameters);
@@ -87,19 +87,6 @@ public class WebClient {
 					if(response.getResultCode().equals("0")) {
 						
 						response.setAttachedData(rawResponseObject);
-						
-						/*
-						Iterator<String> keyIterator = rawResponseObject.keys();						
-						while(keyIterator.hasNext()) {
-							String paramKey = keyIterator.next();
-							if(rawResponseObject.has(paramKey)) {
-								if(!(rawResponseObject.get(paramKey) instanceof JSONArray)) {
-									response.getAttachedData().put(paramKey, rawResponseObject.getString(paramKey));
-								}
-							}
-						}
-						*/
-						
 					}
 				}
 				

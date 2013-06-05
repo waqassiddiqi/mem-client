@@ -50,6 +50,27 @@ public class LoginActivity extends BaseActivity {
 		
 		txtPassword = (EditText) findViewById(R.id.txtPassword);
 		
+		txtPassword.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if(txtPassword.getText().toString().trim().length() > 0) {
+					btnLogin.setEnabled(true);
+				} else {
+					btnLogin.setEnabled(false);
+				}
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+			}
+		});
+		
 		btnLogin = (Button) findViewById(R.id.btnLogin); 
 		btnLogin.setEnabled(false);
 		
