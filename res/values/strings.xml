@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MEM-Client</string>
+    <string name="loginscreen_title">Security Officer Login</string>
+    <string name="loginscreen_username">Username</string>
+    <string name="loginscreen_password">Password</string>
+    <string name="loginscreen_login_button">Login</string>
+    <string name="btnScanQRCodeText">Scan QR Code</string>
+    <string name="btnViewHistoryText">View History</string>
+    <string name="btnViewCampInfoText">View Camp Info</string>
+    <string name="labour_screen_title">Labour Information</string>
+    <string name="btnViewMovementText">View Movements</string>
+    <string name="btnViewOffencesText">View Offences</string>
+    <string name="no_data_found">No Data Found</string>
+	<string name="worker_id">Worker Id</string>
+	<string name="worker_name">Worker Name</string>
+	<string name="offence_details">Offence Details</string>
+	<string name="add_new">Add New</string>
+	<string name="cancel">Cancel</string>
+	
+</resources>
