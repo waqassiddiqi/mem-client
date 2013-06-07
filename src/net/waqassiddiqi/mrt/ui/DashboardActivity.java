@@ -33,7 +33,7 @@ public class DashboardActivity extends BaseActivity {
 		setContentView(R.layout.dashboard_layout);
 		
 		prepareLocationFinder();
-		checkGpsStatus();
+		//checkGpsStatus();
 		new LocationTask(this).execute();
 		
 		try {
