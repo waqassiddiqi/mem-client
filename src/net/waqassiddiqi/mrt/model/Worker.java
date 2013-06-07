@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.waqassiddiqi.mrt.Constants;
+import net.waqassiddiqi.mrt.util.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,47 +37,73 @@ public class Worker {
 			rawResponseObject = new JSONObject(jsonString);
 			workerObject = new Worker();
 			
-			if(rawResponseObject.has("id"))
+			if(rawResponseObject.has("id")) {
 				workerObject.Id = rawResponseObject.getString("id");
+				workerObject.Id = Utils.replace(workerObject.Id, "null", "-");
+			}
 			
-			if(rawResponseObject.has("name"))
+			if(rawResponseObject.has("name")) {
 				workerObject.name = rawResponseObject.getString("name");
+				workerObject.name = Utils.replace(workerObject.name, "null", "-");
+			}
 			
-			if(rawResponseObject.has("gender"))
+			if(rawResponseObject.has("gender")) {
 				workerObject.gender = rawResponseObject.getString("gender");
+				workerObject.gender = Utils.replace(workerObject.gender, "null", "-");
+			}
 			
-			if(rawResponseObject.has("passport"))
+			if(rawResponseObject.has("passport")) {
 				workerObject.passportNumber = rawResponseObject.getString("passport");
+				workerObject.passportNumber = Utils.replace(workerObject.passportNumber, "null", "-");
+			}
 			
-			if(rawResponseObject.has("passportexpiry"))
+			if(rawResponseObject.has("passportexpiry")) {
 				workerObject.passportExpiry = rawResponseObject.getString("passportexpiry");
+				workerObject.passportExpiry = Utils.replace(workerObject.passportExpiry, "null", "-");
+			}
 			
-			if(rawResponseObject.has("nationality"))
+			if(rawResponseObject.has("nationality")) {
 				workerObject.nationality = rawResponseObject.getString("nationality");
+				workerObject.nationality = Utils.replace(workerObject.nationality, "null", "-");
+			}
 			
 			if(rawResponseObject.has("photo"))
 				workerObject.photoUrl = rawResponseObject.getString("photo");
 			
-			if(rawResponseObject.has("permit"))
+			if(rawResponseObject.has("permit")) {
 				workerObject.permit = rawResponseObject.getString("permit");
+				workerObject.permit = Utils.replace(workerObject.permit, "null", "-");
+			}
 			
-			if(rawResponseObject.has("permitexpiry"))
+			if(rawResponseObject.has("permitexpiry")) {
 				workerObject.permitExpiry = rawResponseObject.getString("permitexpiry");
+				workerObject.permitExpiry = Utils.replace(workerObject.permitExpiry, "null", "-");
+			}
 			
-			if(rawResponseObject.has("cidb"))
+			if(rawResponseObject.has("cidb")) {
 				workerObject.cidb = rawResponseObject.getString("cidb");
+				workerObject.cidb = Utils.replace(workerObject.cidb, "null", "-");
+			}
 			
-			if(rawResponseObject.has("cidbExpiry"))
+			if(rawResponseObject.has("cidbexpiry")) {
 				workerObject.cidbExpiry = rawResponseObject.getString("cidbexpiry");
+				workerObject.cidbExpiry = Utils.replace(workerObject.cidbExpiry, "null", "-");
+			}
 			
-			if(rawResponseObject.has("package"))
+			if(rawResponseObject.has("package")) {
 				workerObject.workerPackage = rawResponseObject.getString("package");
+				workerObject.workerPackage = Utils.replace(workerObject.workerPackage, "null", "-");
+			}
 			
-			if(rawResponseObject.has("subcontractor"))
+			if(rawResponseObject.has("subcontractor")) {
 				workerObject.subContractor = rawResponseObject.getString("subcontractor");
+				workerObject.subContractor = Utils.replace(workerObject.subContractor, "null", "-");
+			}
 			
-			if(rawResponseObject.has("ic"))
+			if(rawResponseObject.has("ic")) {
 				workerObject.ic = rawResponseObject.getString("ic");
+				workerObject.ic = Utils.replace(workerObject.ic, "null", "-");
+			}
 			
 			if(rawResponseObject.has("camp"))
 				workerObject.campName = rawResponseObject.getString("camp");

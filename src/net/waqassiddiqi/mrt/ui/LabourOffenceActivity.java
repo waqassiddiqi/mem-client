@@ -7,18 +7,22 @@ import org.json.JSONArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import net.waqassiddiqi.mrt.App;
 import net.waqassiddiqi.mrt.Constants;
 import net.waqassiddiqi.mrt.R;
 import net.waqassiddiqi.mrt.model.Response;
 
 public class LabourOffenceActivity extends BaseActivity {
 
-private String mWorkerId = null;
+	private String mWorkerId = null;
+	private App mApp;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.labour_offence_layout);
+		
+		mApp = (App) getApplication();
 		
 		setIsSubActivity(true);
 		setDisplayHomeAsUpEnabled(true);
@@ -31,7 +35,8 @@ private String mWorkerId = null;
 			finish();
 		}
 		
-		invokeWebservice(Constants.OPCODE_WORKER_OFFENCE, "workerid", mWorkerId);
+		invokeWebservice(Constants.OPCODE_WORKER_OFFENCE, "workerid", mWorkerId, 
+				"username", mApp.getCurrentUsername(), "password", mApp.getCurrentPassword());
 	}
 	
 	@Override

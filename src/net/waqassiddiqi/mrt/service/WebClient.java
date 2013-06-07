@@ -34,6 +34,8 @@ public class WebClient {
 						
 			params.put("opcode", opCode);			
 			
+			Log.d(net.waqassiddiqi.mrt.Constants.TAG, "Request: [URL]" + 
+					net.waqassiddiqi.mrt.Constants.WEB_SERVICE_URL + " [Params] " + params.toString());
 			
 			/*
 			for (Entry<String, String> entry : params.entrySet()) {
@@ -60,7 +62,7 @@ public class WebClient {
             
             inputStream.close();
             
-            Log.d(net.waqassiddiqi.mrt.Constants.TAG, sb.toString());
+            Log.d(net.waqassiddiqi.mrt.Constants.TAG, "Raw response: " + sb.toString());
             
             return parseResponseObject(sb.toString());
             

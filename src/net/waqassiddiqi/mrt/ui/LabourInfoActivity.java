@@ -1,11 +1,6 @@
 package net.waqassiddiqi.mrt.ui;
 
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-
-import org.json.JSONArray;
 
 import com.fedorvlasov.lazylist.ImageLoader;
 
@@ -149,8 +144,12 @@ public class LabourInfoActivity extends BaseActivity {
 			return;
 		
 		((TextView) findViewById(R.id.txtName)).setText(objWorker.name);
-		((TextView) findViewById(R.id.txtGender)).setText(objWorker.gender);
-		((TextView) findViewById(R.id.txtNationality)).setText(objWorker.nationality);
+		((TextView) findViewById(R.id.txtGender)).setText("Gender: " + objWorker.gender);
+		
+		((TextView) findViewById(R.id.txtNationality)).setText("Nationality: " + objWorker.nationality);
+		
+		
+		((TextView) findViewById(R.id.txtICNumber)).setText("IC Number: " + objWorker.ic);
 		
 		((TextView) findViewById(R.id.txtPassport)).setText(objWorker.passportNumber);
 		((TextView) findViewById(R.id.txtPassportExpiry)).setText(objWorker.passportExpiry);
@@ -161,8 +160,15 @@ public class LabourInfoActivity extends BaseActivity {
 		((TextView) findViewById(R.id.txtPackage)).setText(objWorker.workerPackage);
 		((TextView) findViewById(R.id.txtSubcontractor)).setText(objWorker.subContractor);
 		
+		((TextView) findViewById(R.id.txtCIDBNumber)).setText(objWorker.cidb);
+		((TextView) findViewById(R.id.txtCIDBExpiry)).setText(objWorker.cidbExpiry);
+		
 		((TextView) findViewById(R.id.txtCamp)).setSingleLine(false);
 		((TextView) findViewById(R.id.txtCamp)).setText(objWorker.campName);
+		
+		if(objWorker.camps != null && objWorker.camps.size() > 0) {
+			displayCamps(objWorker.camps);
+		}
 		
 		mImgLoader.DisplayImage(objWorker.photoUrl, (ImageView) findViewById(R.id.imgDisplayPic));
 	}

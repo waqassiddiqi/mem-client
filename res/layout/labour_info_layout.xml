@@ -42,23 +42,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtName"
-                android:text="Gender"
+                android:text="Gender: "
                 android:textAppearance="?android:attr/textAppearanceSmall" />
+            
+            <TextView
+                android:id="@+id/txtICNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtGender"
+                
+                android:text="IC Number: " />
             
             <TextView
                 android:id="@+id/txtNationality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtGender"
+                android:layout_below="@+id/txtICNumber"
                 
-                android:text="Pakistani" />
+                android:text="Nationality: " />
         </RelativeLayout>
     </RelativeLayout>
 
-    <TableLayout
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@+id/relativeLayout1">
+        
+        <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayout1"
+        
         android:layout_marginLeft="10dp" 
         android:layout_marginTop="2dp"
         android:layout_marginRight="10dp"
@@ -155,10 +165,30 @@
                 android:id="@+id/txtThree3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Camp" />
+                android:text="CIDB Number" />
 
             <TextView
-                android:id="@+id/txtCamp"
+                android:id="@+id/txtCIDBNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="" />
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/txtThree3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CIDB Expiry" />
+
+            <TextView
+                android:id="@+id/txtCIDBExpiry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -204,7 +234,30 @@
                 android:layout_marginLeft="10dp"
                 android:text="" />
         </TableRow>        
+        
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/txtThree3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camp" />
+
+            <TextView
+                android:id="@+id/txtCamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="" />
+        </TableRow>
     </TableLayout>
+    </ScrollView>
+    
+    
 
     <Button
         android:id="@+id/btnViewOffences"

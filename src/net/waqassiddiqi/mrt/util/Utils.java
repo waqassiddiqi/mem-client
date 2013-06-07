@@ -16,4 +16,14 @@ public class Utils {
 		
 		return false;
 	}
+	
+	public static String replace(String source, String target, String replacement) {
+		if(source == null)
+			return replacement;
+		
+		if(source.equals(target))
+			return replacement;
+		
+		return source;	
+	}
 }
